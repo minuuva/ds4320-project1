@@ -10,7 +10,7 @@
 
 ### Quick Links
 - **Press Release:** [Press Release](PRESS_RELEASE.md)
-- **Data:** [OneDrive Data Folder](link-to-be-added)
+- **Data:** [OneDrive Data Folder](https://myuva-my.sharepoint.com/:f:/g/personal/qce2dp_virginia_edu/IgBsbp8bikwgRJCWBQ1DHrxQAdNoYJJKxI8g9_wMz_vkTgw?e=olv76k)
 - **Pipeline:** [Analysis Pipeline](pipeline/)
 
 ---
