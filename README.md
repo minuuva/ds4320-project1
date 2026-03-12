@@ -52,14 +52,49 @@ By predicting ratings with collaborative filtering on the MovieLens 25M benchmar
 ## Domain Exposition
 
 ### Terminology
-[To be completed]
+| **Term** | **Definition** |
+|----------|----------------|
+| **Collaborative Filtering (CF)** | Recommendation technique that predicts user preferences by learning from patterns of similar users or items |
+| **Content-Based Filtering** | Recommendation approach that suggests items similar to those a user previously liked, based on item features |
+| **RMSE** | Root Mean Square Error - Primary evaluation metric measuring average magnitude of prediction errors; lower is better |
+| **MAE** | Mean Absolute Error - Alternative evaluation metric measuring average absolute difference between predicted and actual ratings |
+| **Cold Start Problem** | Challenge of making accurate recommendations for new users (few ratings) or new items (limited interaction history) |
+| **Matrix Factorization** | Technique decomposing user-item rating matrix into lower-dimensional latent factor matrices to discover hidden patterns |
+| **SVD** | Singular Value Decomposition - Mathematical matrix factorization method widely used in collaborative filtering |
+| **ALS** | Alternating Least Squares - Optimization algorithm for matrix factorization that alternates between fixing user/item factors |
+| **User-Based CF** | Collaborative filtering approach that recommends items liked by similar users |
+| **Item-Based CF** | Collaborative filtering approach that recommends items similar to those the user previously liked |
+| **Latent Factors** | Hidden features learned by matrix factorization (e.g., movie "genres" or user "preferences") not explicitly provided in data |
+| **Explicit Feedback** | Direct user ratings (e.g., 1-5 stars) that clearly indicate preference strength |
+| **Implicit Feedback** | Indirect signals of preference (e.g., clicks, views, watch time) without explicit rating |
+| **Precision@K** | Percentage of top-K recommendations that are relevant (user would actually like) |
+| **Recall@K** | Percentage of all relevant items that appear in top-K recommendations |
+| **NDCG** | Normalized Discounted Cumulative Gain - Ranking metric that rewards relevant items appearing higher in recommendation list |
+| **Netflix Prize** | 2006-2009 competition offering $1M prize for 10% RMSE improvement; established RMSE 0.8567 as gold standard |
+| **Sparsity** | Challenge where most users rate very few items, creating a mostly empty user-item matrix |
+| **Long Tail** | Distribution where few popular items receive most ratings/views, while many niche items have minimal data |
+| **Filter Bubble** | Phenomenon where recommendation systems trap users in narrow preference zones, limiting content discovery |
+| **Warm Start** | Scenario where sufficient rating history exists for users/items, enabling accurate predictions |
+| **Baseline Model** | Simple prediction approach (e.g., user average, item average) used as performance benchmark |
+| **Overfitting** | When model learns training data patterns too specifically, performing poorly on new unseen data |
+| **Cross-Validation** | Technique splitting data into training/test sets multiple times to evaluate model generalization |
 
 ### Domain Overview
-[To be completed]
+This project operates within the domain of recommender systems and collaborative filtering, a critical subfield of machine learning that powers content discovery for billions of users across digital platforms. Recommender systems address the fundamental challenge of information overload: with Netflix offering 15,000+ titles, Spotify hosting 100 million songs, and Amazon listing hundreds of millions of products, users need intelligent guidance to discover content matching their unique preferences. The domain gained prominence during the 2006-2009 Netflix Prize competition, which challenged researchers worldwide to improve rating prediction accuracy by 10% for a $1 million prize, ultimately advancing the field through innovations in matrix factorization, ensemble methods, and temporal dynamics modeling. Collaborative filtering represents the dominant approach in this domain, making predictions by identifying patterns across users and items rather than relying on explicit content features—if User A and User B both loved Movies X, Y, and Z, the system infers they have similar tastes and recommends Movie W (loved by User B) to User A. The MovieLens dataset from GroupLens Research serves as the benchmark standard for academic and industry research, providing a clean, well-documented testbed with explicit ratings that enable rigorous evaluation using established metrics like RMSE (Root Mean Square Error) and MAE (Mean Absolute Error). This domain sits at the intersection of data science, user experience design, and business strategy, where even small improvements in recommendation accuracy translate to measurable impacts on user engagement, subscription retention, and platform revenue, making it one of the most commercially valuable applications of machine learning in the modern digital economy.
 
 ### Background Reading
-[To be completed]
+All background reading materials are available in this folder: [Background Readings Folder](https://drive.google.com/drive/folders/1gbzGKXDH2UGdPDgIPnDbU24Pla-HGTWc?usp=drive_link). 
 
+The folder contains 5 research readings related to collobarative filtering, deep learning approaches, and recommender system evaluation. 
+
+### Summary Table of Background Readings
+| **Title** | **Brief Description** | **Link to File** |
+|-----------|----------------------|------------------|
+| A Survey on Deep Neural Networks in Collaborative Filtering Recommendation Systems | Comprehensive 2024 survey examining how Deep Neural Networks (MLPs, CNNs, RNNs, GNNs, Autoencoders, GANs) overcome limitations of traditional CF by modeling complex non-linear relationships. Covers modern architectures including graph neural networks and transformer-based approaches. | [Link 1](https://drive.google.com/file/d/1PevLWSt3iLJZvBU_oF8QhwKqZuX2HUaC/view?usp=sharing) |
+| Our Model Achieves Excellent Performance on MovieLens: What Does It Mean? | Critical 2024 analysis revealing that MovieLens records user-platform interactions rather than true user-movie preferences, questioning whether excellent MovieLens performance generalizes to real-world scenarios. Essential reading for understanding dataset limitations and evaluation validity. | [Link 2](https://drive.google.com/file/d/1z6jNgQoR8OO1Fy8iuxj-WVbScBrOmUfT/view?usp=drive_link) |
+| Graph Neural Networks in Recommender Systems: A Survey | Comprehensive 2023 survey by Gao et al. reviewing GNN-based recommender systems, covering graph construction, embedding propagation, model optimization, and computational efficiency. Discusses spectral and spatial GNN models for capturing collaborative signals in user-item interaction graphs. | [Link 3](https://drive.google.com/file/d/1olG56ltS1uaVt0m3LBCiei29Lx601xF3/view?usp=drive_link) |
+| Cold-Start Recommendation towards the Era of Large Language Models: A Comprehensive Survey and Roadmap | January 2025 survey examining how cold-start solutions evolved from content features and graph relations to leveraging large language models' world knowledge. Provides roadmap for addressing new user/item challenges with modern deep learning approaches. | [Link 4](https://drive.google.com/file/d/1ba4KQp59hC4THRgsBrE6XquwZu2IBi9w/view?usp=drive_link) |
+| A Survey of Graph Neural Networks for Social Recommender Systems | December 2022 survey by Sharma et al. examining GNN-based social recommender systems leveraging both user-item interactions and user-user social relations. Analyzes 80 papers with detailed taxonomy of input types, GNN encoders, and evaluation metrics for social recommendation tasks. | [Link 5](https://drive.google.com/file/d/1jNTWOTxueeASSgiNxLW-49gbWGuCuGYo/view?usp=drive_link) |
 ---
 
 ## Data Creation
