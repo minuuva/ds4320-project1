@@ -17,10 +17,12 @@
 
 ## Problem Definition
 
-### General Problem
-Recommending content (e.g., Netflix) - General Problem #14 from rubric
+### General Problem: 
 
-### Specific Problem
+Recommending content (e.g., Netflix) - General Problem #14 from DS 4320 Project 1 rubric
+
+### Refined Specific Problem:
+
 Predicting personalized movie ratings on a 0.5-5.0 star scale for individual users by leveraging collaborative filtering patterns, temporal rating dynamics, and genre preferences to improve recommendation accuracy beyond baseline popularity-based and demographic approaches.
 
 ### Rationale for Refinement
@@ -45,7 +47,11 @@ Streaming platforms like Netflix, Amazon Prime Video, and Disney+ collectively s
 
 By predicting ratings with collaborative filtering on the MovieLens 25M benchmark dataset (the gold standard with 25 million ratings from 162,000 users), we can develop and evaluate recommendation algorithms that address these challenges, contributing to the broader goal of helping users discover content they'll genuinely enjoy rather than just popular mainstream titles.
 
-**Press Release:** [Building a Smarter Movie Recommendation Engine](PRESS_RELEASE.md)
+**Press Release**
+
+**Headline:** Smarter Movie Recommendations: Collaborative Filtering System Achieves 20% Better Accuracy Than Popularity-Based Approaches
+
+**Full Press Release:** [PRESS_RELEASE.md](PRESS_RELEASE.md)
 
 ---
 
@@ -171,7 +177,16 @@ To address the identified biases and ensure robust analysis, we implement the fo
 [To be completed]
 
 ### Data Tables
-[To be completed]
+
+| Table Name | Rows | Description | CSV File |
+|------------|------|-------------|----------|
+| movies | 62,423 | Movie metadata including unique identifier, title with release year, and pipe-separated genre classifications | [movies.csv](https://myuva-my.sharepoint.com/:f:/g/personal/qce2dp_virginia_edu/IgBsbp8bikwgRJCWBQ1DHrxQAdNoYJJKxI8g9_wMz_vkTgw?e=olv76k) |
+| ratings | 25,000,095 | User ratings on 0.5-5.0 star scale with Unix timestamps recording when each rating was provided | [ratings.csv](https://myuva-my.sharepoint.com/:f:/g/personal/qce2dp_virginia_edu/IgBsbp8bikwgRJCWBQ1DHrxQAdNoYJJKxI8g9_wMz_vkTgw?e=olv76k) |
+| users | 162,541 | Derived user statistics including total ratings count, average rating, and first/last rating dates | [users.csv](https://myuva-my.sharepoint.com/:f:/g/personal/qce2dp_virginia_edu/IgBsbp8bikwgRJCWBQ1DHrxQAdNoYJJKxI8g9_wMz_vkTgw?e=olv76k) |
+| tags | 1,093,360 | User-generated free-text tags applied to movies with timestamps indicating when tags were created | [tags.csv](https://myuva-my.sharepoint.com/:f:/g/personal/qce2dp_virginia_edu/IgBsbp8bikwgRJCWBQ1DHrxQAdNoYJJKxI8g9_wMz_vkTgw?e=olv76k) |
+| links | 62,423 | External identifiers mapping MovieLens IDs to IMDB and TMDB for cross-platform integration | [links.csv](https://myuva-my.sharepoint.com/:f:/g/personal/qce2dp_virginia_edu/IgBsbp8bikwgRJCWBQ1DHrxQAdNoYJJKxI8g9_wMz_vkTgw?e=olv76k) |
+| genome_scores | 15,584,448 | Machine-generated tag relevance scores (0.0-1.0) indicating how applicable each tag is to each movie | [genome-scores.csv](https://myuva-my.sharepoint.com/:f:/g/personal/qce2dp_virginia_edu/IgBsbp8bikwgRJCWBQ1DHrxQAdNoYJJKxI8g9_wMz_vkTgw?e=olv76k) |
+| genome_tags | 1,128 | Tag definitions for the genome scoring system providing standardized tag vocabulary | [genome-tags.csv](https://myuva-my.sharepoint.com/:f:/g/personal/qce2dp_virginia_edu/IgBsbp8bikwgRJCWBQ1DHrxQAdNoYJJKxI8g9_wMz_vkTgw?e=olv76k) |
 
 ### Data Dictionary
 [To be completed]
