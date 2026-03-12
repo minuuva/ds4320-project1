@@ -18,7 +18,9 @@ Our collaborative filtering recommendation system solves the personalization cha
 
 ### Understanding the Visualization
 
-![Alt text](../hw/output.png)
+![MovieLens 25M Dataset Analysis](visualizations/movielens_analysis.png)
+
+*Figure 1: Three-panel analysis showing (top-left) rating distribution across 25M ratings, (top-right) RMSE comparison demonstrating 20% improvement over baseline approaches, and (bottom) temporal rating activity from 1995-2019 demonstrating platform growth and importance of temporal weighting.*
 
 The three-panel visualization above demonstrates why collaborative filtering outperforms popularity-based approaches and how the MovieLens dataset reveals personalization opportunities.
 
