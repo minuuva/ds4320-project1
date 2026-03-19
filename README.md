@@ -191,7 +191,54 @@ The Entity-Relationship diagram below illustrates the logical structure of the M
 | genome_tags | 1,128 | Tag definitions for the genome scoring system providing standardized tag vocabulary | [genome-tags.csv](https://myuva-my.sharepoint.com/:f:/g/personal/qce2dp_virginia_edu/IgBsbp8bikwgRJCWBQ1DHrxQAdNoYJJKxI8g9_wMz_vkTgw?e=olv76k) |
 
 ### Data Dictionary
-[To be completed]
+
+Complete data dictionary documenting all features across 7 tables with data types, descriptions, and examples.
+
+#### Table 1: MOVIES
+| Column | Data Type | Description | Example |
+|--------|-----------|-------------|---------|
+| movieId | int64 | Unique identifier for each movie (Primary Key) | 1 |
+| title | string | Movie title including release year in parentheses | "Toy Story (1995)" |
+| genres | string | Pipe-separated list of genres for the movie | "Adventure\|Animation\|Children\|Comedy\|Fantasy" |
+#### Table 2: RATINGS
+| Column | Data Type | Description | Example |
+|--------|-----------|-------------|---------|
+| userId | int64 | User identifier (Primary Key, Foreign Key → users.userId) | 1 |
+| movieId | int64 | Movie identifier (Primary Key, Foreign Key → movies.movieId) | 296 |
+| rating | float64 | User's rating on 0.5-5.0 scale in half-star increments | 5.0 |
+| timestamp | int64 | Unix epoch timestamp when rating was provided (Primary Key) | 1147880044 |
+#### Table 3: USERS (Derived)
+| Column | Data Type | Description | Example |
+|--------|-----------|-------------|---------|
+| userId | int64 | Unique user identifier (Primary Key) | 1 |
+| num_ratings | int64 | Total number of ratings provided by this user | 70 |
+| avg_rating | float64 | User's average rating across all movies rated | 3.81 |
+| first_rating_date | datetime | Date of user's earliest rating | 2006-05-17 12:14:13 |
+| last_rating_date | datetime | Date of user's most recent rating | 2006-05-17 15:34:15 |
+#### Table 4: TAGS
+| Column | Data Type | Description | Example |
+|--------|-----------|-------------|---------|
+| userId | int64 | User who created the tag (Primary Key, Foreign Key → users.userId) | 3 |
+| movieId | int64 | Movie the tag applies to (Primary Key, Foreign Key → movies.movieId) | 260 |
+| tag | string | Free-text tag applied by user to describe movie | "classic" |
+| timestamp | int64 | Unix epoch timestamp when tag was created (Primary Key) | 1439472355 |
+#### Table 5: LINKS
+| Column | Data Type | Description | Example |
+|--------|-----------|-------------|---------|
+| movieId | int64 | Movie identifier (Primary Key, Foreign Key → movies.movieId) | 1 |
+| imdbId | int64 | Internet Movie Database identifier for cross-platform lookup | 114709 |
+| tmdbId | float64 | The Movie Database identifier for cross-platform lookup | 862.0 |
+#### Table 6: GENOME_SCORES
+| Column | Data Type | Description | Example |
+|--------|-----------|-------------|---------|
+| movieId | int64 | Movie identifier (Primary Key, Foreign Key → movies.movieId) | 1 |
+| tagId | int64 | Tag identifier (Primary Key, Foreign Key → genome_tags.tagId) | 1 |
+| relevance | float64 | Computed relevance score (0.0-1.0) indicating how applicable the tag is to the movie | 0.02500 |
+#### Table 7: GENOME_TAGS
+| Column | Data Type | Description | Example |
+|--------|-----------|-------------|---------|
+| tagId | int64 | Unique tag identifier for genome scoring system (Primary Key) | 1 |
+| tag | string | Standardized tag term used in genome relevance scoring | "007" |
 
 ---
 
