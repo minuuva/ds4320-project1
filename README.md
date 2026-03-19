@@ -174,7 +174,9 @@ To address the identified biases and ensure robust analysis, we implement the fo
 ## Metadata
 
 ### Schema
-[To be completed]
+
+The Entity-Relationship diagram below illustrates the logical structure of the MovieLens 25M relational database, showing all 7 tables with their primary keys, foreign keys, attributes, data types, and relationships using crow's foot notation.
+![MovieLens 25M ER Diagram](docs/er_diagram.png)
 
 ### Data Tables
 
