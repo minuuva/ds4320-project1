@@ -242,31 +242,26 @@ Complete data dictionary documenting all features across 7 tables with data type
 
 ### Data Dictionary: Uncertainty Quantification for Numerical Features
 
-Comprehensive statistical analysis quantifying uncertainty, variability, and distribution characteristics for all numerical attributes in the dataset.
+Comprehensive uncertainty metrics for **analytically relevant** numerical features. Identifiers (movieId, userId, imdbId, tmdbId) and timestamps are excluded as they are technical fields rather than predictive features.
 
-| Table | Feature | Mean | Std Dev | CV (%) | Min | Max | Range | Median | IQR | 95% CI | n |
-|-------|---------|------|---------|--------|-----|-----|-------|--------|-----|--------|---|
+| Table | Feature | Mean | Std Dev | CV (%) | Min | Max | Range | Median | IQR | 95% CI | Sample Size |
+|-------|---------|------|---------|--------|-----|-----|-------|--------|-----|--------|-------------|
 | ratings | rating | 3.5339 | 1.0607 | 30.02 | 0.50 | 5.00 | 4.50 | 3.50 | 1.00 | [3.5334, 3.5344] | 25,000,095 |
-| ratings | timestamp | 1.216B | 226.9M | 18.66 | 789.7M | 1.574B | 784.7M | 1.199B | 435.5M | [1.215B, 1.216B] | 25,000,095 |
 | users | num_ratings | 153.81 | 268.05 | 174.27 | 20 | 32,202 | 32,182 | 71.00 | 126.00 | [152.50, 155.11] | 162,541 |
 | users | avg_rating | 3.6792 | 0.4774 | 12.97 | 0.50 | 5.00 | 4.50 | 3.70 | 0.60 | [3.6769, 3.6815] | 162,541 |
 | genome_scores | relevance | 0.1065 | 0.1430 | 134.27 | 0.00 | 1.00 | 1.00 | 0.0532 | 0.1030 | [0.1061, 0.1069] | 15,584,448 |
-| links | imdbId | 1,456,706 | 2,098,007 | 144.02 | 1 | 11,170,942 | 11,170,941 | 325,805 | 1,982,037 | [1,440,248, 1,473,165] | 62,423 |
-| links | tmdbId | 155,187 | 153,363 | 98.82 | 2 | 646,282 | 646,280 | 86,751 | 218,487 | [153,983, 156,391] | 62,316 |
 
 **Statistical Interpretation:**
 
-**Rating Variability (CV=30%):** The moderate coefficient of variation in ratings indicates consistent spread across the 0.5-5.0 scale, with most users utilizing the full range. The mean (3.53) slightly exceeds median (3.50), suggesting mild positive skew from voluntary response bias where users preferentially rate movies they enjoyed.
+**Rating Variability (CV=30%):** Moderate coefficient of variation indicates users utilize the full 0.5-5.0 scale with consistent spread. The near-identical mean (3.53) and median (3.50) suggest approximately symmetric distribution, though the positive skew from voluntary response bias (users preferentially rate movies they liked) slightly elevates central tendency.
 
-**User Activity Heterogeneity (CV=174%):** Extreme variability in num_ratings reveals a power law distribution—median user provides only 71 ratings while the mean is 154, with a maximum of 32,202. This 174% CV indicates the cold-start problem affects the majority of users, while a small fraction of power users dominate rating volume.
+**User Activity Heterogeneity (CV=174%):** Extreme variability reveals a power law distribution—median user provides only 71 ratings while mean is 154, with maximum of 32,202. This indicates the cold-start problem affects the majority of users, while a small fraction of power users contribute disproportionately to rating volume. The high IQR (126) and wide 95% CI demonstrate substantial uncertainty when generalizing about "typical" user behavior.
 
-**User Rating Consistency (CV=13%):** Low variability in avg_rating shows users maintain relatively stable rating tendencies (most average 3.4-4.0 stars), validating user normalization approaches that assume consistent within-user rating patterns for baseline adjustment.
+**User Rating Consistency (CV=13%):** Low variability in avg_rating validates the assumption that individual users maintain relatively stable rating tendencies over time. Most users average 3.4-4.0 stars (IQR=0.60), with few consistently harsh (avg < 2.0) or inflated (avg > 4.5) raters. This consistency justifies user normalization techniques for isolating preference signals from rating style.
 
-**Tag Relevance Sparsity (CV=134%):** High CV and low mean (0.11) with median (0.05) demonstrates that most genome tags are weakly relevant to most movies, creating a sparse content-based feature space where only genre-aligned tags show strong signals (max=1.0). This sparsity necessitates dimensionality reduction or selective feature use in hybrid models.
+**Tag Relevance Sparsity (CV=134%):** High CV combined with low mean (0.11) and median (0.05) demonstrates that most genome tags are weakly relevant to most movies, creating a sparse content-based feature space. Only genre-aligned tags show strong signals (max=1.0), necessitating dimensionality reduction or selective feature engineering in hybrid recommendation models. The right-skewed distribution (mean > median) indicates a few highly relevant tag-movie pairs dominate the genome matrix.
 
-**External ID Coverage (tmdbId missing=107):** The TMDB identifier has 0.17% missing values, concentrated in pre-2000 films where The Movie Database coverage was incomplete. IMDB IDs are complete but show extreme range (CV=144%), spanning silent era films (ID=1) to 2019 releases (ID=11M+), reflecting MovieLens's historical catalog depth.
-
-**Temporal Concentration (timestamp CV=19%):** While the dataset spans 24 years (1995-2019), the 18.66% CV indicates rating volume is heavily concentrated in recent years (2015-2019), as evidenced by the median timestamp of April 2008 despite collection starting in 1995. This temporal skew justifies time-weighted model training approaches.
+**Note:** Timestamp values (ratings.timestamp, tags.timestamp) and identifier fields (movieId, userId, imdbId, tmdbId, tagId) are excluded from uncertainty quantification as they serve technical/indexing purposes rather than representing analytical features with meaningful statistical distributions for modeling.
 
 ---
 
